@@ -1,0 +1,25 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'AzureRmPipeline-conn'
+    subscriptionId: '8e85fb61-0a2d-4207-b3a2-d81646afc30a'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'Default-Networking'
+    location: 'East US'
+    templateLocation: 'URL of the file'
+    csmFileLink: 'https://github.com/ranfisr/deploy-arm/blob/main/vnet.json'
+    overrideParameters: '-projectName [deploy-arm-template]'
+    deploymentMode: 'Incremental'
+    deploymentName: 'DeployPipelineTemplate'
