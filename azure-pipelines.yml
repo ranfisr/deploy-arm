@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  pool: vmssagentpool
+  server: vmssagentpool
 
 steps:
 - task: AzureResourceManagerTemplateDeployment@3
