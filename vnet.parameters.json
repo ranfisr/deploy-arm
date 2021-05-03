@@ -1,19 +1,185 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "vnetname": {
-            "value": "vnet1"
+        "location": {
+            "value": "eastus"
         },
-        "subnetname": {
-            "value": "sn-vnet1"
+        "networkInterfaceName": {
+            "value": "vm-file-ucsf-nic"
         },
-        "vnetprefix": {
-            "value": "11.0.0.0/16"
+        "enableAcceleratedNetworking": {
+            "value": true
         },
-        "subnetprefix": {
-            "value": "11.0.1.0/24"
+        "networkSecurityGroupName": {
+            "value": "vm-file-ucsf-nsg"
+        },
+        "networkSecurityGroupRules": {
+            "value": [
+                {
+                    "name": "default-allow-ssh",
+                    "properties": {
+                        "priority": 1000,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceApplicationSecurityGroups": [],
+                        "destinationApplicationSecurityGroups": [],
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "22"
+                    }
+                },
+                {
+                    "name": "zabbix-port",
+                    "properties": {
+                        "priority": 1010,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceApplicationSecurityGroups": [],
+                        "destinationApplicationSecurityGroups": [],
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "10050"                        
+                    }
+                }
+            ]
+        },
+        "subnetName": {
+            "value": "SN-File"
+        },
+        "virtualNetworkId": {
+            "value": "/subscriptions/432dc55c-4582-4db9-a081-66d0251015b8/resourceGroups/Default-Networking/providers/Microsoft.Network/virtualNetworks/VN-eABC"
+        },
+        "publicIpAddressName": {
+            "value": "vm-file-ucsf-ip"
+        },
+        "publicIpAddressType": {
+            "value": "Dynamic"
+        },
+        "publicIpAddressSku": {
+            "value": "Basic"
+        },
+        "virtualMachineName": {
+            "value": "vm-file-ucsf-01"
+        },
+        "virtualMachineComputerName": {
+            "value": "vm-file-ucsf-01"
+        },
+        "virtualMachineRG": {
+            "value": "rg-file-ucsf"
+        },
+        "osDiskType": {
+            "value": "Premium_LRS"
+        },
+        "dataDisks": {
+            "value": [
+                {
+                    "lun": 0,
+                    "createOption": "attach",
+                    "caching": "None",
+                    "writeAcceleratorEnabled": false,
+                    "id": null,
+                    "name": "vm-file-ucsf_dd_00",
+                    "storageAccountType": null,
+                    "diskSizeGB": null,
+                    "diskEncryptionSet": null
+                }
+            ]
+        },
+        "dataDiskResources": {
+            "value": [
+                {
+                    "name": "vm-file-ucsf_dd_00",
+                    "sku": "Premium_LRS",
+                    "properties": {
+                        "diskSizeGB": 1024,
+                        "creationData": {
+                            "createOption": "empty"
+                        }
+                    }
+                }
+            ]
+        },
+        "virtualMachineSize": {
+            "value": "Standard_DS2_v2"
+        },
+        "adminUsername": {
+            "value": "eabc"
+        },
+        "adminPassword": {
+            "value": null
+        },
+        "backupVaultName": {
+            "value": "vault-file-ucsf-01"
+        },
+        "backupFabricName": {
+            "value": "Azure"
+        },
+        "backupVaultRGName": {
+            "value": "rg-file-ucsf"
+        },
+        "backupVaultRGIsNew": {
+            "value": false
+        },
+        "backupPolicyName": {
+            "value": "PoliticaSemanal"
+        },
+        "backupPolicySchedule": {
+            "value": {
+                "schedulePolicyType": "SimpleSchedulePolicy",
+                "scheduleRunFrequency": "Daily",
+                "scheduleRunDays": null,
+                "scheduleRunTimes": [
+                    "2021-04-28T01:30:00.000Z"
+                ]
+            }
+        },
+        "backupPolicyRetention": {
+            "value": {
+                "retentionPolicyType": "LongTermRetentionPolicy",
+                "dailySchedule": {
+                    "retentionTimes": [
+                        "2021-04-28T01:30:00.000Z"
+                    ],
+                    "retentionDuration": {
+                        "count": 7,
+                        "durationType": "Days"
+                    }
+                },
+                "weeklySchedule": {
+                    "daysOfTheWeek": [
+                        "Sunday"
+                    ],
+                    "retentionTimes": [
+                        "2021-04-28T01:30:00.000Z"
+                    ],
+                    "retentionDuration": {
+                        "count": 4,
+                        "durationType": "Weeks"
+                    }
+                },
+                "monthlySchedule": null,
+                "yearlySchedule": null
+            }
+        },
+        "backupPolicyTimeZone": {
+            "value": "Argentina Standard Time"
+        },
+        "backupInstantRpRetentionRangeInDays": {
+            "value": 2
+        },
+        "backupInstantRPDetails": {
+            "value": {}
+        },
+        "backupItemName": {
+            "value": "vm;iaasvmcontainerv2;rg-file-ucsf;vm-file-ucsf-01"
+        },
+        "internalip":{
+            "value": "10.10.1.39"
         }
-
     }
 }
