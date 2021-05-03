@@ -6,7 +6,7 @@
             "value": "eastus"
         },
         "networkInterfaceName": {
-            "value": "vm-file-ucsf-nic"
+            "value": "vm-file-uscp-nic"
         },
         "enableAcceleratedNetworking": {
             "value": true
@@ -43,7 +43,7 @@
                         "sourceAddressPrefix": "*",
                         "sourcePortRange": "*",
                         "destinationAddressPrefix": "*",
-                        "destinationPortRange": "10050"                        
+                        "destinationPortRange": "10050"
                     }
                 }
             ]
@@ -52,7 +52,7 @@
             "value": "SN-File"
         },
         "virtualNetworkId": {
-            "value": "/subscriptions/432dc55c-4582-4db9-a081-66d0251015b8/resourceGroups/Default-Networking/providers/Microsoft.Network/virtualNetworks/VN-eABC"
+            "value": "/subscriptions/8e85fb61-0a2d-4207-b3a2-d81646afc30a/resourceGroups/Default-Networking/providers/Microsoft.Network/virtualNetworks/VN-eABC"
         },
         "publicIpAddressName": {
             "value": "vm-file-ucsf-ip"
@@ -111,7 +111,7 @@
             "value": "eabc"
         },
         "adminPassword": {
-            "value": null
+            "value": "lujan2021eABC"
         },
         "backupVaultName": {
             "value": "vault-file-ucsf-01"
@@ -179,7 +179,7 @@
             "value": "vm;iaasvmcontainerv2;rg-file-ucsf;vm-file-ucsf-01"
         },
         "internalip":{
-            "value": "10.10.1.39"
+            "value": "10.10.1.40"
         }
     }
 }
