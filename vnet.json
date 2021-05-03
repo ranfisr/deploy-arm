@@ -253,7 +253,7 @@
         },
         {
             "apiVersion": "2017-05-10",
-            "name": "BackupVaultAndOrPolicy-vault-file-PoliticaSemanal",
+            "name": "BackupVaultAndOrPolicy-vault-file-ucsf-01-PoliticaSemanal",
             "type": "Microsoft.Resources/deployments",
             "resourceGroup": "[parameters('backupVaultRGName')]",
             "properties": {
@@ -324,7 +324,7 @@
             },
             "dependsOn": [
                 "[resourceId(parameters('virtualMachineRG'), 'Microsoft.Compute/virtualMachines', parameters('virtualMachineName'))]",
-                "[concat('Microsoft.Resources/deployments', '/', 'BackupVaultAndOrPolicy-vault-file-PoliticaSemanal')]"
+                "[concat('Microsoft.Resources/deployments', '/', 'BackupVaultAndOrPolicy-vault-file-ucsf-01-PoliticaSemanal')]"
             ]
         }
     ],
