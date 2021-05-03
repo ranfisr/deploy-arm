@@ -16,7 +16,7 @@ steps:
     azureResourceManagerConnection: 'AzureRmPipeline-conn'
     subscriptionId: '8e85fb61-0a2d-4207-b3a2-d81646afc30a'
     action: 'Create Or Update Resource Group'
-    resourceGroupName: 'Default-Networking'
+    resourceGroupName: 'rg-file-ucsf'
     location: 'East US'
     templateLocation: 'URL of the file'
     csmFileLink: 'https://raw.githubusercontent.com/ranfisr/deploy-arm/main/vnet.json'
